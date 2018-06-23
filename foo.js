@@ -12,6 +12,7 @@ function displayGif() {
         console.log(queryURL);
 
         console.log(response);
+        $("#feelings-view").empty(); 
         
         var results = response.data;
 
@@ -44,11 +45,12 @@ function displayGif() {
          
           $("#feelings-view").prepend(gifDiv);
 
-          $(".gif").on("click", function() {
+      }
+    })
+}
 
-        $(gifDiv).empty();            
-            
-            var data = $(this).attr("data-state");
+function changeImage (){
+    var data = $(this).attr("data-state");
             
             if (data === "still") {
               $(this).attr("src", $(this).attr("data-animate"));
@@ -57,9 +59,6 @@ function displayGif() {
               $(this).attr("src", $(this).attr("data-still"));
               $(this).attr("data-state", "still");
             }
-          });
-      }
-    })
 }
 
 
@@ -89,6 +88,7 @@ function renderButtons (){
     });
 
     $(document).on("click", ".feeling", displayGif );
+    $(document).on("click",".gif", changeImage);
 
     $("#feelings-view").prepend();
 
