@@ -45,6 +45,8 @@ function displayGif() {
           $("#feelings-view").prepend(gifDiv);
 
           $(".gif").on("click", function() {
+
+        $(gifDiv).empty();            
             
             var data = $(this).attr("data-state");
             
@@ -78,6 +80,7 @@ function renderButtons (){
 
 
     $("#add-feelings").on("click", function(event) {
+        
         event.preventDefault();
         var feeling = $("#feelings-input").val().trim();
         feelings.push(feeling);
@@ -88,6 +91,8 @@ function renderButtons (){
     $(document).on("click", ".feeling", displayGif );
 
     $("#feelings-view").prepend();
+
+    
 
     renderButtons();
 
